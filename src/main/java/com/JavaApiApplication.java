@@ -1,4 +1,4 @@
-package com.eb110.tsi.Api;
+package com;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
