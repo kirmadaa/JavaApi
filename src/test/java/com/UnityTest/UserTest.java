@@ -1,4 +1,6 @@
-package com;
+package com.UnityTest;
+
+import com.User;
 
 import static org.junit.Assert.*;
 
