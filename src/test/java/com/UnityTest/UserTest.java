@@ -1,6 +1,6 @@
 package com.UnityTest;
 
-import com.User;
+import com.model.User;
 
 import static org.junit.Assert.*;
 

@@ -1,6 +1,6 @@
 package com.Cucumber.Steps;
 
-import com.User;
+import com.model.User;
 import org.springframework.boot.test.context.SpringBootTest;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

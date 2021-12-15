@@ -1,6 +1,6 @@
 package com.Cucumber.Steps;
 
-import com.Car;
+import com.model.Car;
 import org.springframework.boot.test.context.SpringBootTest;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
