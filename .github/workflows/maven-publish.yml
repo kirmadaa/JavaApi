@@ -33,4 +33,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          AWS_DB_URL: ${{ secrets.AWS_DB_URL }}
+          AWS_DB_PASSWORD: ${{ secrets.AWS_DB_PASSWORD }}
+          AWS_DB_USER: ${{ secrets.AWS_DB_USER }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=eb110_JavaApi
