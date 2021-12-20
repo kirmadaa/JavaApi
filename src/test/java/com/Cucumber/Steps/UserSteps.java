@@ -100,4 +100,20 @@ public class UserSteps {
         userList = StreamSupport.stream(users.spliterator(), false).collect(Collectors.toList());
         assertEquals((long)totalNrOfUsers - 1, userList.size());
     }
+
+    //=============================================
+
+    @Given("the user with id which doesn't exist in db")
+    public void the_user_with_id_which_doesn_t_exist_in_db() {
+        user = new User();
+        user.setId(2222);
+    }
+    @When("i update its name")
+    public void i_update_its_name() {
+        user.setName("miecio");
+    }
+    @Then("the user method returns")
+    public void the_user_method_returns() {
+        userService.updateUser(user, user.getId());
+    }
 }

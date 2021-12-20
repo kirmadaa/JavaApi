@@ -19,3 +19,8 @@ Feature: Testing the user
         Given the number of users
         When i delete the last user
         Then its users total number is less by one
+
+    Scenario: Update the user which doesn't exist in db
+        Given the user with id which doesn't exist in db
+        When i update its name
+        Then the user method returns

@@ -99,4 +99,20 @@ public class CarSteps {
         carList = StreamSupport.stream(cars.spliterator(), false).collect(Collectors.toList());
         assertEquals((long)totalNrOfCars - 1, carList.size());
     }
+
+    //===============================================
+
+    @Given("the car with id which doesn't exist in db")
+    public void the_user_with_id_which_doesn_t_exist_in_db() {
+        car = new Car();
+        car.setId(2222);
+    }
+    @When("i update its speed")
+    public void i_update_its_speed() {
+        car.setSpeed(345);
+    }
+    @Then("the methods returns")
+    public void the_methods_returns() {
+        carService.updateCar(car, car.getId());
+    }
 }

@@ -19,3 +19,8 @@ Feature: Testing the car
         Given the number of cars
         When i delete the last car
         Then its total number is less by one
+
+    Scenario: Update the car which doesn't exist in db
+        Given the car with id which doesn't exist in db
+        When i update its speed
+        Then the methods returns
