@@ -19,4 +19,10 @@ public class UserTest {
         temp.setName("Ola");
         assertEquals("Ola", temp.getName());
     }
+
+    @org.junit.Test
+    public void setId(){
+        temp.setId(1000);
+        assertEquals(1000, temp.getId());
+    }
 }
