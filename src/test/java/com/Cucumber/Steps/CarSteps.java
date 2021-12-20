@@ -39,7 +39,7 @@ public class CarSteps {
         assertEquals(int1, testSpeed);
     }
 
-    //getAllCars=====================================================
+    //========================================================
 
     @Given("a new car and set the speed to {int}")
     public void a_new_car_and_set_the_speed_to(Integer int1) {
@@ -58,7 +58,7 @@ public class CarSteps {
         assertEquals((long)int1, car.getSpeed());
     }
 
-    //============================
+    //===================================================
 
     @Given("the last car on the list")
     public void the_last_car_on_the_list() {
@@ -80,7 +80,7 @@ public class CarSteps {
         assertEquals((long)int1, car.getSpeed());
     }
 
-    //===========================================
+    //============================================
 
     @Given("the number of cars")
     public void the_number_of_cars() {
