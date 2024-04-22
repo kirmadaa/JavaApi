@@ -46,7 +46,6 @@ jobs:
 
       - name: Analyze code with SonarCloud
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_COVERAGE_JACOCO_REPORT_PATHS: target/jacoco.xml  # Update path if needed
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=eb110_JavaApi
