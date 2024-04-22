@@ -9,37 +9,44 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build and Analyze with SonarCloud
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      
+          fetch-depth: 0  # Shallow clones for faster checkout
+
       - name: Set up JDK 17
         uses: actions/setup-java@v1
         with:
           java-version: 17
-      
+
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-      
+
       - name: Cache Maven packages
         uses: actions/cache@v1
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      
-      - name: Build and analyze
+
+      - name: Install dependencies
+        run: mvn install
+
+      - name: Run tests and generate JaCoCo reports
+        run: mvn test
+
+      - name: Print JaCoCo report location (for debugging)
+        run: echo "JaCoCo reports: $(find target -name '*.xml')"
+
+      - name: Analyze code with SonarCloud
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          AWS_DB_URL: ${{ secrets.AWS_DB_URL }}
-          AWS_DB_PASSWORD: ${{ secrets.AWS_DB_PASSWORD }}
-          AWS_DB_USER: ${{ secrets.AWS_DB_USER }}
-        run: |
+          SONAR_COVERAGE_JACOCO_REPORT_PATHS: target/jacoco.xml  # Update path if needed
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=eb110_JavaApi
