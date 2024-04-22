@@ -5,6 +5,11 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.cvshealth.digital.framework</groupId>
+    <artifactId>your-artifact-id</artifactId> <!-- Make sure to replace 'your-artifact-id' with the actual artifact ID -->
+    <version>2.0.11</version>
+
+    <!-- Parent configuration -->
     <parent>
         <groupId>com.cvshealth.digital.framework</groupId>
         <artifactId>digital-spring-boot-parent</artifactId>
@@ -12,6 +17,7 @@
         <relativePath />
     </parent>
     
+    <!-- Profiles -->
     <profiles>
         <profile>
             <id>coverage</id>
